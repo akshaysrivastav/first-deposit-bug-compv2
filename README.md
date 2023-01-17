@@ -9,7 +9,7 @@ As per the implementation of CToken contract, there exist two cases for CToken a
 1. First deposit - when `CToken.totalSupply()` is `0`.
 2. All subsequent deposits.
 
-Here is the actual code (extra code and comments clipped for better reading):
+Here is the actual CToken code (extra code and comments clipped for better reading):
 
 ```solidity
 function exchangeRateStoredInternal() virtual internal view returns (uint) {
@@ -62,7 +62,7 @@ CToken contract.
 
 The same steps can be performed again to steal the next user's deposit.
 
-It should be noted that the attack can happen in two ways.
+It should be noted that the attack can happen in two ways:
 
 - The attacker can simply execute the Step 1 and 2 as soon as the CToken gets added to the lending protocol.
 - The attacker watches the pending transactions of the network and frontruns the user's deposit transaction by executing Step 1 and 2 and then backruns it with Step 3. 
@@ -118,7 +118,3 @@ function mintFresh(address minter, uint mintAmount) internal {
 ```
 
 Instead of a fixed `1000` value an admin controlled parameterized value can also be used to control the burn amount on a per CToken basis.
-
-
-### Contact
-For further details and queries feel free to reach out to [Akshay Srivastav](https://twitter.com/akshaysrivastv/).
